@@ -33,6 +33,14 @@
 
     function cer_custom_block_styles() {
 
+        wp_enqueue_block_style('contact-form-7/contact-form-selector',array(
+            'handle' => 'cf7',
+            'src' => plugin_dir_url(__FILE__) . 'assets/css/default/cf7.css',
+            'deps'  => array(),
+            'ver'   => null,
+            'media' => 'all'
+        ));
+
         wp_enqueue_block_style('core/group', array(
             'handle' => 'custom-grid',
             'src' => plugin_dir_url(__FILE__) . 'assets/css/styles/core-group-grid.css',
