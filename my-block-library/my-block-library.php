@@ -56,3 +56,5 @@
 
     }
     add_action('init', 'cer_custom_block_styles');
+
+    include_once('blocks/cer-social-phone/index.php');
