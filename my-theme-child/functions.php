@@ -1,6 +1,6 @@
 <?php 
 
-if (!function_exists('zav_theme_setup')) :
+if (!function_exists('cer_theme_setup')) :
     /**
      * Theme Setup: Set language domain and load translations from theme_folder/languages.
      * 
@@ -8,23 +8,23 @@ if (!function_exists('zav_theme_setup')) :
      * 
      * @return void
      */
-    function zav_theme_setup() {
+    function cer_theme_setup() {
 
         /*** Set and load language domain ***/
             if (!defined('LANG_DOMAIN')) {
-                define('LANG_DOMAIN', 'zavatta');
+                define('LANG_DOMAIN', 'ilmiotema');
             }
 
             load_theme_textdomain(LANG_DOMAIN, get_template_directory() . '/languages');
         /*** END - Set and load language domain ***/
     }
-    add_action('after_setup_theme', 'zav_theme_setup');
+    add_action('after_setup_theme', 'cer_theme_setup');
 
 endif;
 
 /*** SVG SUPPORT ***/
 	
-    if (!function_exists('zav_add_svg_mime_type')) :
+    if (!function_exists('cer_add_svg_mime_type')) :
         
         /**
          * Add image/svg+xml Mime Type.
@@ -35,15 +35,15 @@ endif;
          * 
          * @return array $mimes Updated
          */
-        function zav_add_svg_mime_type($mimes) {
+        function cer_add_svg_mime_type($mimes) {
             $mimes['svg'] = 'image/svg+xml';
             return $mimes;
         }
-        add_filter('upload_mimes', 'zav_add_svg_mime_type', 10, 1);
+        add_filter('upload_mimes', 'cer_add_svg_mime_type', 10, 1);
 
     endif;
 
-    if (!function_exists('zav_svg_secondary_mime_type')) :
+    if (!function_exists('cer_svg_secondary_mime_type')) :
 
         /**
          * Support for 'image/svg' as the secondary mime type of .svg files, in addition to the default 'image/svg+xml' support.
@@ -57,23 +57,23 @@ endif;
          * 
          * @return array $check Updated
          */
-        function zav_svg_secondary_mime_type( $check, $file, $filename, $mimes ) {
+        function cer_svg_secondary_mime_type( $check, $file, $filename, $mimes ) {
             if ( empty( $check['ext'] ) && empty( $check['type'] ) ) :
                 // Adjust to your needs!
                 $secondary_mime = [ 'svg' => 'image/svg' ];
                 
                 // Run another check, but only for our secondary mime and not on core mime types.
-                remove_filter( 'wp_check_filetype_and_ext', 'zav_svg_secondary_mime_type', 99, 4 );
+                remove_filter( 'wp_check_filetype_and_ext', 'cer_svg_secondary_mime_type', 99, 4 );
                 $check = wp_check_filetype_and_ext( $file, $filename, $secondary_mime );
-                add_filter( 'wp_check_filetype_and_ext', 'zav_svg_secondary_mime_type', 99, 4 );
+                add_filter( 'wp_check_filetype_and_ext', 'cer_svg_secondary_mime_type', 99, 4 );
             endif;
             return $check;
         }
-        add_filter( 'wp_check_filetype_and_ext', 'zav_svg_secondary_mime_type', 99, 4 );    
+        add_filter( 'wp_check_filetype_and_ext', 'cer_svg_secondary_mime_type', 99, 4 );    
 
     endif;
 
-    if (!function_exists('zav_fix_wp_get_attachment_image_svg')) :
+    if (!function_exists('cer_fix_wp_get_attachment_image_svg')) :
         
         /**
          * Fix Width/Height for SVG Rendering.
@@ -87,7 +87,7 @@ endif;
          * 
          * @return array $image Updated
          */
-        function zav_fix_wp_get_attachment_image_svg($image, $attachment_id, $size, $icon) {
+        function cer_fix_wp_get_attachment_image_svg($image, $attachment_id, $size, $icon) {
             if (is_array($image) && preg_match('/\.svg$/i', $image[0]) && $image[1] <= 1) { 
                 if (is_array($size)) { 
                     $image[1] = $size[0]; 
@@ -103,7 +103,7 @@ endif;
             }
             return $image;
         }
-        add_filter( 'wp_get_attachment_image_src', 'zav_fix_wp_get_attachment_image_svg', 10, 4 );
+        add_filter( 'wp_get_attachment_image_src', 'cer_fix_wp_get_attachment_image_svg', 10, 4 );
 
     endif;
 
@@ -112,7 +112,7 @@ endif;
 
 
 /*** CUSTOM SCRIPTS AND STYLES ***/
-if (!function_exists('zav_enqueue_scripts')) :    
+if (!function_exists('cer_enqueue_scripts')) :    
 
     /**
      * Enqueue Script and Styles.
@@ -121,7 +121,7 @@ if (!function_exists('zav_enqueue_scripts')) :
      * 
      * @return void
      */
-    function zav_enqueue_scripts() {
+    function cer_enqueue_scripts() {
 
         /**
          * Register style.css file in theme root to be used with wp_enqueue_style() function.
@@ -303,13 +303,13 @@ if (!function_exists('zav_enqueue_scripts')) :
         */
 
     }
-    add_action( 'wp_enqueue_scripts', 'zav_enqueue_scripts' );
+    add_action( 'wp_enqueue_scripts', 'cer_enqueue_scripts' );
 
 endif;
 /*** END - Custom Scripts and Styles***/
 
 /*** CUSTOM POST TYPES AND TAXONOMIES ***/
-if (!function_exists('zav_register_post_types_and_taxonomies')) :
+if (!function_exists('cer_register_post_types_and_taxonomies')) :
 
     /** 
      * Register custom post types and taxonomies
@@ -318,7 +318,7 @@ if (!function_exists('zav_register_post_types_and_taxonomies')) :
      * 
      * @return void
      */
-    function zav_register_post_types_and_taxonomies() {
+    function cer_register_post_types_and_taxonomies() {
         
         /**
          * Register a custom post type.
@@ -397,13 +397,13 @@ if (!function_exists('zav_register_post_types_and_taxonomies')) :
             ) );
         */    
     }
-    add_action( 'init', 'zav_register_post_types_and_taxonomies' );
+    add_action( 'init', 'cer_register_post_types_and_taxonomies' );
 
 endif;
 /*** END - Custom Post Types and Taxonomies ***/
 
 /*** CUSTOM BLOCK STYLES ***/
-if (!function_exists('zav_register_block_styles')) :
+if (!function_exists('cer_register_block_styles')) :
     
     /**
      * Register block styles
@@ -412,7 +412,7 @@ if (!function_exists('zav_register_block_styles')) :
      * 
      * @return void
      */
-    function zav_register_block_styles() {
+    function cer_register_block_styles() {
 
         if ( !function_exists( 'register_block_style' ) ) {
             return;
@@ -430,7 +430,7 @@ if (!function_exists('zav_register_block_styles')) :
                 'handle'=> 'core-button',
                 'src'   => get_theme_file_uri( 'assets/css/blocks/core-button.css' ),
                 'deps'  => array(),
-                'ver'   => null
+                'ver'   => null,
                 'media' => 'all'
             ) );
         */
@@ -452,6 +452,11 @@ if (!function_exists('zav_register_block_styles')) :
                 'inline_style' => '.wp-block-button.is-style-blue .wp-element-button { background-color: var(--wp--preset--color--blue) } .wp-block-button.is-style-blue .wp-element-button:hover { background-color: var(--wp--preset--color--blue-semitransparent); }'
             ) );
         */
+        register_block_style('core/paragraph', array(
+            'name' => 'testo-blu',
+            'label' => 'Testo Blu',
+            'inline_style' => 'p.is-style-testo-blu { color: blue; }'
+        ));
 
         /**
          * Register a new block style for an existing block with an external CSS
@@ -476,9 +481,20 @@ if (!function_exists('zav_register_block_styles')) :
                 )
             );
         */
+        wp_enqueue_block_style('core/paragraph', array(
+            'handle' => 'testo-rosso',
+            'src' => get_theme_file_uri('testo-rosso.css'),
+            'deps'  => array(),
+            'ver'   => null,
+            'media' => 'all'
+        ));
+        register_block_style('core/paragraph', array(
+            'name' => 'testo-rosso',
+            'label' => 'Testo Rosso'
+        ));
 
     }
-    add_action('init','zav_register_block_styles');
+    add_action('init','cer_register_block_styles');
 
 endif;
 /*** END - Custom Block Styles ***/
