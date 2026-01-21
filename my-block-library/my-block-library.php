@@ -79,3 +79,4 @@
 
     include_once('blocks/cer-social-phone/index.php');
     include_once('blocks/cer-first-sample/index.php');
+    include_once('blocks/cer-button/index.php');
