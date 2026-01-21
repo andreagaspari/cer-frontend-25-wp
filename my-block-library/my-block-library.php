@@ -57,4 +57,24 @@
     }
     add_action('init', 'cer_custom_block_styles');
 
+    function cer_custom_block_category($categories) {
+        
+        // Prepare the arguments with default values
+        $category = array(
+            'slug'  => 'cescot-blocks',
+            'title' => 'Cescot'
+        );
+
+        // Sepeara array per aggiungere la categoria alla posizione voluta
+        array_splice(
+            $categories,
+            3, // Posizione
+            0,
+            array($category)
+        );
+
+        return $categories;
+    }
+    add_filter('block_categories_all', 'cer_custom_block_category', 10, 1);
+
     include_once('blocks/cer-social-phone/index.php');
