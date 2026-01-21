@@ -1,12 +1,15 @@
-{ 
-  "name": "",
-  "version": "",
-  "description": "",
+{
+  "name": "cer-first-sample",
+  "description": "How-to: https://developer.wordpress.org/block-editor/how-to-guides/javascript/js-build-setup/",
   "main": "build/index.js",
   "scripts": {
     "start": "wp-scripts start",
     "build": "wp-scripts build"
   },
   "author": "immaginificio",
-  "license": "GPL-3.0-or-later"
+  "license": "GPL-3.0-or-later",
+  "devDependencies": {
+    "@wordpress/scripts": "^31.3.0"
+  },
+  "version": "1.0.0"
 }

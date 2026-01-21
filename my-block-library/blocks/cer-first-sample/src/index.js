@@ -1,5 +1,4 @@
 import { registerBlockType } from '@wordpress/blocks';
-import {__} from '@wordpress/i18n';
 
 import { 
     useBlockProps 
@@ -10,8 +9,8 @@ import { useEffect } from '@wordpress/element';
 import block from '../block.json';
 
 registerBlockType( block.name, {
-    title: __(block.title, 'immaginificio'),
-    description: __(block.description, 'immaginificio'),
+    title: block.title,
+    description: block.description,
     attributes: {
         blockId: {
             type: 'string'
@@ -27,14 +26,16 @@ registerBlockType( block.name, {
             setAttributes({ blockId: clientId });
         }, [clientId]);
                 
-        const blockProps = useBlockProps();
+        const blockProps = useBlockProps({
+            className: 'cer-first-sample-block'
+        });
 
-        return <span { ...blockProps }>{__('Your block content goes here', 'immaginificio')}</span>;
+        return <span { ...blockProps }>{'Your block content goes here'}</span>;
     },
     save: ( props ) => {
         const blockProps = useBlockProps.save();
         
-        return <span { ...blockProps }>{__('Your block content goes here', 'immaginificio')}</span>;
+        return <span { ...blockProps }>{'Your block content goes here'}</span>;
     }
     
 } );

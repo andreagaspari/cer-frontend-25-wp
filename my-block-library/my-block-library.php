@@ -78,3 +78,4 @@
     add_filter('block_categories_all', 'cer_custom_block_category', 10, 1);
 
     include_once('blocks/cer-social-phone/index.php');
+    include_once('blocks/cer-first-sample/index.php');
