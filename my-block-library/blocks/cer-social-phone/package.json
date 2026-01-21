@@ -2,14 +2,15 @@
   "name": "cer-social-phone",
   "version": "1.0.0",
   "main": "build/index.js",
+  "type": "module",
   "scripts": {
-    "build": "wp-scripts build",
-    "start": "wp-scripts start"
+    "start": "wp-scripts start",
+    "build": "wp-scripts build"
   },
   "author": "",
   "license": "GPL-3.0-or-later",
   "description": "",
   "devDependencies": {
-    "@wordpress/scripts": "^31.3.0"
+    "@wordpress/scripts": "^24.0.0"
   }
 }
