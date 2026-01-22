@@ -19,6 +19,9 @@ registerBlockType( block.name, {
             'type': 'string',
             'default': 'center'
         },
+        'content': {
+            'type': 'string'
+        },
         'targetUrl': {
             'type': 'string',
             'default': ''

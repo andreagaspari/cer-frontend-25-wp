@@ -155,6 +155,9 @@ __webpack_require__.r(__webpack_exports__);
       'type': 'string',
       'default': 'center'
     },
+    'content': {
+      'type': 'string'
+    },
     'targetUrl': {
       'type': 'string',
       'default': ''
