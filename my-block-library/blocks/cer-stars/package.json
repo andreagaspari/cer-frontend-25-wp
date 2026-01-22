@@ -1,0 +1,1 @@
+{"name":"cer-stars","description":"How-to: https://developer.wordpress.org/block-editor/how-to-guides/javascript/js-build-setup/","main":"build/index.js","scripts":{"start":"wp-scripts start","build":"wp-scripts build"},"author":"immaginificio","license":"GPL-3.0-or-later","version":"1.0.0","devDependencies":{"@wordpress/scripts":"^31.3.0"}}
