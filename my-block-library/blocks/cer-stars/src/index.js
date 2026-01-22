@@ -32,14 +32,19 @@ registerBlockType( block.name, {
          * @param {number} numero Numero di stelle da visualizzare
          * @returns {string} Stringa contenente le stelle
         */
-       const stringaStelle = function(numero) {
+       /*const stringaStelle = function(numero) {
            let output = '';
            for (let i = 0; i < numero; i++) {
                output += '★';
             }
+            if (numero % 1 !== 0) {
+                output += '½';
+            }
             return output;
-        }
+        }*/
         
+        const larghezzaStelle = (stelle / 5) * 100 + '%'; // "70%"
+
         return <>
             { /* Barra laterale delle opzioni del blocco - Sezione IMPOSTAZIONI */}
             <InspectorControls key="settings"> 
@@ -64,8 +69,8 @@ registerBlockType( block.name, {
                 </PanelBody>
             </InspectorControls>
 
-            <div { ...blockProps }>
-                { stringaStelle(stelle) }
+            <div { ...blockProps } className="star-wrapper">
+                <div className="star-fill" style={{ width: larghezzaStelle}}></div>
             </div>
         </>;
     },
@@ -89,8 +94,10 @@ registerBlockType( block.name, {
             return output;
         }
         
-        return <div { ...blockProps }>
-            { stringaStelle(stelle) }
+        const larghezzaStelle = (stelle / 5) * 100 + '%'; // "70%"
+
+        return  <div { ...blockProps } className="star-wrapper">
+            <div className="star-fill" style={{ width: larghezzaStelle}}></div>
         </div>;
     }
     

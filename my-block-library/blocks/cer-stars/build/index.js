@@ -173,13 +173,19 @@ __webpack_require__.r(__webpack_exports__);
      * @param {number} numero Numero di stelle da visualizzare
      * @returns {string} Stringa contenente le stelle
     */
-    const stringaStelle = function (numero) {
-      let output = '';
-      for (let i = 0; i < numero; i++) {
-        output += '★';
-      }
-      return output;
-    };
+    /*const stringaStelle = function(numero) {
+        let output = '';
+        for (let i = 0; i < numero; i++) {
+            output += '★';
+         }
+         if (numero % 1 !== 0) {
+             output += '½';
+         }
+         return output;
+     }*/
+
+    const larghezzaStelle = stelle / 5 * 100 + '%'; // "70%"
+
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
@@ -211,7 +217,13 @@ __webpack_require__.r(__webpack_exports__);
         })
       }, "settings"), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
         ...blockProps,
-        children: stringaStelle(stelle)
+        className: "star-wrapper",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          className: "star-fill",
+          style: {
+            width: larghezzaStelle
+          }
+        })
       })]
     });
   },
@@ -236,9 +248,17 @@ __webpack_require__.r(__webpack_exports__);
       }
       return output;
     };
+    const larghezzaStelle = stelle / 5 * 100 + '%'; // "70%"
+
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
       ...blockProps,
-      children: stringaStelle(stelle)
+      className: "star-wrapper",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        className: "star-fill",
+        style: {
+          width: larghezzaStelle
+        }
+      })
     });
   }
 });
