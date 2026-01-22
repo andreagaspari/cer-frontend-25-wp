@@ -8,7 +8,7 @@
   \********************/
 (module) {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"title":"Button Block","name":"cescot/cer-button","description":"Bottone personalizzato","category":"cescot-blocks","icon":"hammer","textdomain":"myblocklibrary","editorScript":"file:./build/index.js","viewScript":"file:./assets/js/script.js","editorStyle":"file:./assets/css/editor.css","style":"file:./assets/css/style.css","supports":{"anchor":true,"align":true,"color":{"background":true,"text":true,"link":true},"shadow":true,"spacing":{"margin":true,"padding":true,"blockGap":true},"typography":{"fontSize":true,"lineHeight":true}}}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"title":"Button Block","name":"cescot/cer-button","description":"Bottone personalizzato","category":"cescot-blocks","icon":"hammer","textdomain":"myblocklibrary","editorScript":"file:./build/index.js","viewScript":"file:./assets/js/script.js","editorStyle":"file:./assets/css/editor.css","style":"file:./assets/css/style.css","supports":{"anchor":true,"align":false,"color":{"background":true,"text":true,"link":true},"shadow":true,"spacing":{"margin":true,"padding":true,"blockGap":true},"typography":{"fontSize":true,"lineHeight":true}}}');
 
 /***/ },
 
@@ -151,6 +151,10 @@ __webpack_require__.r(__webpack_exports__);
   title: _block_json__WEBPACK_IMPORTED_MODULE_3__.title,
   description: _block_json__WEBPACK_IMPORTED_MODULE_3__.description,
   attributes: {
+    'alignment': {
+      'type': 'string',
+      'default': 'center'
+    },
     'targetUrl': {
       'type': 'string',
       'default': ''
@@ -160,7 +164,11 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   edit: props => {
-    const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)();
+    const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)({
+      style: {
+        textAlign: props.attributes.alignment
+      }
+    });
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
@@ -185,26 +193,77 @@ __webpack_require__.r(__webpack_exports__);
             }
           })]
         })
-      }, "settings"), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {}, "styles"), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+      }, "settings"), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {}, "styles"), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.BlockControls, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToolbarGroup, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToolbarButton, {
+            isPressed: props.attributes.targetBlank,
+            onClick: () => {
+              props.setAttributes({
+                targetBlank: !props.attributes.targetBlank
+              });
+            },
+            icon: props.attributes.targetBlank ? "external" : "admin-links"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToolbarDropdownMenu, {
+            icon: props.attributes.alignment == 'left' ? 'align-left' : props.attributes.alignment == 'right' ? 'align-right' : 'align-center',
+            label: "Posizione",
+            controls: [{
+              title: 'Sinistra',
+              icon: 'align-left',
+              onClick: () => {
+                props.setAttributes({
+                  alignment: 'left'
+                });
+              },
+              isActive: props.attributes.alignment == 'left'
+            }, {
+              title: 'Centro',
+              icon: 'align-center',
+              onClick: () => {
+                props.setAttributes({
+                  alignment: 'center'
+                });
+              },
+              isActive: props.attributes.alignment == 'center'
+            }, {
+              title: 'Destra',
+              icon: 'align-right',
+              onClick: () => {
+                props.setAttributes({
+                  alignment: 'right'
+                });
+              },
+              isActive: props.attributes.alignment == 'right'
+            }]
+          })]
+        })
+      }, 'controls'), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
         ...blockProps,
-        tagName: "span",
-        value: props.attributes.content,
-        allowedFormats: ['core/bold', 'core/italic'],
-        onChange: valoreAttuale => props.setAttributes({
-          content: valoreAttuale
-        }),
-        placeholder: 'Aggiungi testo...'
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+          tagName: "span",
+          value: props.attributes.content,
+          allowedFormats: ['core/bold', 'core/italic'],
+          onChange: valoreAttuale => props.setAttributes({
+            content: valoreAttuale
+          }),
+          placeholder: 'Aggiungi testo...'
+        })
       })]
     });
   },
   save: props => {
-    const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save();
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+    const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
+      style: {
+        textAlign: props.attributes.alignment
+      }
+    });
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
       ...blockProps,
-      tagName: "a",
-      value: props.attributes.content,
-      target: props.attributes.targetBlank ? '_blank' : undefined,
-      href: props.attributes.targetUrl
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+        tagName: "a",
+        value: props.attributes.content,
+        target: props.attributes.targetBlank ? '_blank' : undefined,
+        href: props.attributes.targetUrl
+      })
     });
   }
 });
