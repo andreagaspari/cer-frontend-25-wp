@@ -1,0 +1,20 @@
+.wp-block.wp-block-cescot-cer-grid {
+    display: block;
+}
+
+.wp-block-cescot-cer-grid .block-editor-block-list__layout {
+    display: grid;
+    grid-template-columns: repeat(var(--cer-grid--mob-columns, 1), 1fr);
+}
+
+@media (min-width: 600px) {
+    .wp-block-cescot-cer-grid .block-editor-block-list__layout {
+        grid-template-columns: repeat(var(--cer-grid--tablet-columns, 2), 1fr);
+    }
+}
+
+@media (min-width: 900px) {
+    .wp-block-cescot-cer-grid .block-editor-block-list__layout {
+        grid-template-columns: repeat(var(--cer-grid--desktop-columns, 3), 1fr);
+    }
+}

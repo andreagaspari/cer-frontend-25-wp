@@ -81,3 +81,4 @@
     include_once('blocks/cer-first-sample/index.php');
     include_once('blocks/cer-button/index.php');
     include_once('blocks/cer-stars/index.php');
+    include_once('blocks/cer-grid/index.php');

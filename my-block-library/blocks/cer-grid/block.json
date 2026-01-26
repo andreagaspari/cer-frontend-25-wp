@@ -1,0 +1,30 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "title": "Blocco Griglia",
+    "name": "cescot/cer-grid",
+    "description": "Griglia con opzioni aggiuntive",
+    "category": "cescot-blocks",
+    "icon": "grid-view",
+    "editorScript": "file:./build/index.js",
+    "viewScript": "file:./assets/js/script.js",
+    "editorStyle": "file:./assets/css/editor.css",
+    "style": [
+        "file:./assets/css/style.css", 
+        "file:./assets/css/style-2.css"
+    ],
+    "supports": {
+        "anchor": true,
+        "align": true,
+        "color": {
+            "background": true,
+            "text": true,
+            "link": true
+        },
+        "spacing": {
+            "margin": true,
+            "padding": true,
+            "blockGap": true
+        }
+    }
+}

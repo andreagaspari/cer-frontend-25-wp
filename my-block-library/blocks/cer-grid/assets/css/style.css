@@ -1,0 +1,16 @@
+.wp-block-cescot-cer-grid {
+    display: grid;
+    grid-template-columns: repeat(var(--cer-grid--mob-columns, 1), 1fr);
+}
+
+@media (min-width: 600px) {
+    .wp-block-cescot-cer-grid {
+        grid-template-columns: repeat(var(--cer-grid--tablet-columns, 2), 1fr);
+    }
+}
+
+@media (min-width: 900px) {
+    .wp-block-cescot-cer-grid {
+        grid-template-columns: repeat(var(--cer-grid--desktop-columns, 3), 1fr);
+    }
+}
